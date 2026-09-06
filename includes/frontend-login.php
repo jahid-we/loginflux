@@ -67,6 +67,20 @@ function jzlf_login_body_class( $classes ) {
         }
     }
 
+    // Element Visibility Classes
+    if ( ! empty( $settings['hide_lost_password'] ) && '1' === (string) $settings['hide_lost_password'] ) {
+        $classes[] = 'loginflux-hide-lost-password';
+    }
+    if ( ! empty( $settings['hide_back_to_blog'] ) && '1' === (string) $settings['hide_back_to_blog'] ) {
+        $classes[] = 'loginflux-hide-back-to-blog';
+    }
+    if ( ! empty( $settings['hide_remember_me'] ) && '1' === (string) $settings['hide_remember_me'] ) {
+        $classes[] = 'loginflux-hide-remember-me';
+    }
+    if ( ! empty( $settings['hide_lang_switcher'] ) && '1' === (string) $settings['hide_lang_switcher'] ) {
+        $classes[] = 'loginflux-hide-lang-switcher';
+    }
+
     return $classes;
 }
 add_filter( 'login_body_class', 'jzlf_login_body_class' );
@@ -261,3 +275,71 @@ function jzlf_login_custom_subtitle( $message ) {
     return $message;
 }
 add_filter( 'login_message', 'jzlf_login_custom_subtitle' );
+
+/**
+ * Conditionally disable language switcher dropdown
+ *
+ * @param bool $display Whether to display the language switcher.
+ * @return bool
+ */
+function jzlf_login_display_language_dropdown( $display ) {
+    $settings = jzlf_get_settings();
+    if ( ! empty( $settings['hide_lang_switcher'] ) && '1' === (string) $settings['hide_lang_switcher'] ) {
+        return false;
+    }
+    return $display;
+}
+add_filter( 'login_display_language_dropdown', 'jzlf_login_display_language_dropdown' );
+
+/**
+ * Render Custom Placeholders and Custom Footer Content
+ */
+function jzlf_login_footer_customizations() {
+    $settings = jzlf_get_settings();
+
+    // Custom Input Placeholders via JS
+    $user_placeholder = ! empty( $settings['username_placeholder'] ) ? $settings['username_placeholder'] : '';
+    $pass_placeholder = ! empty( $settings['password_placeholder'] ) ? $settings['password_placeholder'] : '';
+    $has_footer_text  = ! empty( $settings['footer_text'] );
+
+    ?>
+    <script type="text/javascript">
+    (function() {
+        function lfInitFooterAndPlaceholders() {
+            <?php if ( $user_placeholder ) : ?>
+            var userField = document.getElementById('user_login');
+            if (userField) {
+                userField.setAttribute('placeholder', '<?php echo esc_js( $user_placeholder ); ?>');
+            }
+            <?php endif; ?>
+            <?php if ( $pass_placeholder ) : ?>
+            var passField = document.getElementById('user_pass');
+            if (passField) {
+                passField.setAttribute('placeholder', '<?php echo esc_js( $pass_placeholder ); ?>');
+            }
+            <?php endif; ?>
+
+            <?php if ( $has_footer_text ) : ?>
+            var loginBox = document.getElementById('login');
+            var footerElem = document.querySelector('.loginflux-custom-footer');
+            if (loginBox && footerElem && footerElem.parentNode !== loginBox) {
+                loginBox.appendChild(footerElem);
+            }
+            <?php endif; ?>
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', lfInitFooterAndPlaceholders);
+        } else {
+            lfInitFooterAndPlaceholders();
+        }
+    })();
+    </script>
+    <?php
+
+    // Custom Footer Text
+    if ( $has_footer_text ) {
+        echo '<div class="loginflux-custom-footer">' . wp_kses_post( $settings['footer_text'] ) . '</div>';
+    }
+}
+add_action( 'login_footer', 'jzlf_login_footer_customizations' );
+

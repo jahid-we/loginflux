@@ -108,5 +108,14 @@ function jzlf_sanitize_settings( $input ) {
     $sanitized['card_blur']        = isset( $input['card_blur'] ) ? absint( $input['card_blur'] ) : 28;
     $sanitized['border_radius']    = isset( $input['border_radius'] ) ? absint( $input['border_radius'] ) : 24;
 
+    // Form Controls & Visibility
+    $sanitized['hide_lost_password']   = ! empty( $input['hide_lost_password'] ) ? '1' : '0';
+    $sanitized['hide_back_to_blog']    = ! empty( $input['hide_back_to_blog'] ) ? '1' : '0';
+    $sanitized['hide_remember_me']     = ! empty( $input['hide_remember_me'] ) ? '1' : '0';
+    $sanitized['hide_lang_switcher']   = ! empty( $input['hide_lang_switcher'] ) ? '1' : '0';
+    $sanitized['username_placeholder'] = isset( $input['username_placeholder'] ) ? sanitize_text_field( $input['username_placeholder'] ) : '';
+    $sanitized['password_placeholder'] = isset( $input['password_placeholder'] ) ? sanitize_text_field( $input['password_placeholder'] ) : '';
+    $sanitized['footer_text']          = isset( $input['footer_text'] ) ? wp_kses_post( $input['footer_text'] ) : '';
+
     return $sanitized;
 }

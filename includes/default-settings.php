@@ -94,5 +94,14 @@ function jzlf_get_default_settings() {
         'card_bg_color'    => 'rgba(255, 255, 255, 0.45)',
         'card_blur'        => '28',
         'border_radius'    => '24',
+
+        // Form Controls & Visibility
+        'hide_lost_password'   => '0',
+        'hide_back_to_blog'    => '0',
+        'hide_remember_me'     => '0',
+        'hide_lang_switcher'   => '0',
+        'username_placeholder' => '',
+        'password_placeholder' => '',
+        'footer_text'          => '',
     ];
 }

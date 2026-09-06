@@ -2,7 +2,7 @@
 
 > Transform your WordPress login page with animated visual effects, dynamic backgrounds, glassmorphism, custom branding, and modern color controls.
 
-[![Version](https://img.shields.io/badge/version-1.3.0-blue.svg)](https://github.com/jahid-we/loginflux)
+[![Version](https://img.shields.io/badge/version-1.4.0-blue.svg)](https://github.com/jahid-we/loginflux)
 [![WordPress Plugin](https://img.shields.io/badge/WordPress-Loginflux-blue?logo=wordpress)](https://wordpress.org/plugins/loginflux/)
 [![License: GPL v2+](https://img.shields.io/badge/License-GPL%20v2%2B-green.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
 
@@ -22,6 +22,9 @@
   - **Animation 7 (Retro Synthwave & Neon Horizon)**: 80s neon horizon floor with radiant perspective glow.
   - **Animation 8 (Liquid Morphing Blobs)**: Organic fluid metaballs with smooth SaaS glow.
 - **Smart Background Handling**: If a custom background image is uploaded, it takes priority; if no image is present, your chosen animated visual engine takes over seamlessly.
+- **Form Controls & Element Visibility**: Modern iOS-style toggle switches to hide or show "Lost your password?", "Back to website", "Remember me", and Language Switcher.
+- **Custom Input Placeholders**: Set custom placeholder hints for Username/Email and Password input fields.
+- **Custom Footer / Copyright Content**: Display custom copyright, disclaimer, or privacy notice with HTML link support below the form.
 - **WordPress Media Uploader**: Native WP media modal integration for instant logo and background wallpaper uploads.
 - **Glassmorphism UI**: Frosted glass card with customizable blur, opacity, and border radius.
 - **Brand Customization**: Custom logo upload, dimensions (width & height), and subtitle text.

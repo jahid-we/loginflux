@@ -18,6 +18,12 @@
             window.history.replaceState(null, '', cleanUrl);
         }
 
+        // Ensure any notices inside the banner are relocated to the top above the banner
+        var bannerNotices = $('.loginflux-header-banner').find('.notice, div.updated, div.error');
+        if (bannerNotices.length) {
+            bannerNotices.insertBefore('.loginflux-header-banner');
+        }
+
         // Initialize WP Color Picker
         if ($.fn.wpColorPicker) {
             $('.loginflux-color-picker').wpColorPicker();

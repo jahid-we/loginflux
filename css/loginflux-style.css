@@ -101,9 +101,12 @@ html, body.login {
 
 body.login {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 32px 16px;
+    box-sizing: border-box;
     font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     color: var(--loginflux-text);
     background-color: var(--loginflux-bg-color);
@@ -524,7 +527,7 @@ body.login #login {
     z-index: 2;
     width: 100%;
     max-width: 440px;
-    margin: 24px 16px;
+    margin: 0 auto;
     padding: 44px 38px;
     background: var(--loginflux-card-bg);
     border: 1px solid var(--loginflux-card-border);
@@ -891,3 +894,65 @@ body.login .language-switcher select:focus {
         max-width: 100% !important;
     }
 }
+
+/* =========================================================
+   ELEMENT VISIBILITY TOGGLES
+   ========================================================= */
+body.login.loginflux-hide-lost-password #nav a[href*="action=lostpassword"] {
+    display: none !important;
+}
+
+body.login.loginflux-hide-back-to-blog #backtoblog {
+    display: none !important;
+}
+
+body.login.loginflux-hide-remember-me #login .forgetmenot {
+    display: none !important;
+}
+
+body.login.loginflux-hide-lang-switcher .language-switcher {
+    display: none !important;
+}
+
+/* =========================================================
+   CUSTOM LOGIN FOOTER / COPYRIGHT TEXT
+   ========================================================= */
+.loginflux-custom-footer {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 440px;
+    margin: 22px auto 0 !important;
+    padding: 16px 12px 0 !important;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    text-align: center;
+    color: var(--loginflux-muted);
+    font-size: 12.5px;
+    line-height: 1.55;
+    transition: opacity 0.2s ease;
+}
+
+body.login > .loginflux-custom-footer {
+    border-top: none;
+    padding: 0 !important;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.loginflux-custom-footer a {
+    color: var(--loginflux-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+body.login > .loginflux-custom-footer a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.loginflux-custom-footer a:hover {
+    color: var(--loginflux-primary-hover);
+    text-decoration: underline;
+}
+
+

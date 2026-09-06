@@ -23,6 +23,9 @@ function jzlf_admin_page_content() {
 
     <div class="wrap loginflux-admin-wrap">
 
+        <h1 class="screen-reader-text"><?php esc_html_e( 'Loginflux Settings', 'loginflux' ); ?></h1>
+        <hr class="wp-header-end">
+
         <?php settings_errors( 'loginflux_settings' ); ?>
         <?php
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reading query parameter for flash notice display only.
@@ -38,10 +41,10 @@ function jzlf_admin_page_content() {
             <div class="loginflux-header-title">
                 <span class="loginflux-logo-icon dashicons dashicons-lock"></span>
                 <div>
-                    <h1>
+                    <h2 class="loginflux-brand-title">
                         <?php esc_html_e( 'Loginflux', 'loginflux' ); ?>
                         <span class="loginflux-badge">v<?php echo esc_html( LOGINFLUX_VERSION ); ?></span>
-                    </h1>
+                    </h2>
                     <p><?php esc_html_e( 'Transform your login page with animated visual effects, dynamic backgrounds, and custom styling.', 'loginflux' ); ?></p>
                 </div>
             </div>
@@ -75,6 +78,10 @@ function jzlf_admin_page_content() {
                             <a href="#card-colors" class="loginflux-nav-tab" id="loginflux-nav-card-colors" data-tab="card-colors" role="tab" aria-controls="loginflux-tab-card-colors" aria-selected="false" tabindex="-1">
                                 <span class="dashicons dashicons-admin-appearance"></span>
                                 <?php esc_html_e( 'Form & Colors', 'loginflux' ); ?>
+                            </a>
+                            <a href="#form-controls" class="loginflux-nav-tab" id="loginflux-nav-form-controls" data-tab="form-controls" role="tab" aria-controls="loginflux-tab-form-controls" aria-selected="false" tabindex="-1">
+                                <span class="dashicons dashicons-visibility"></span>
+                                <?php esc_html_e( 'Form Controls', 'loginflux' ); ?>
                             </a>
                         </div>
 
@@ -150,7 +157,7 @@ function jzlf_admin_page_content() {
                         <div class="loginflux-tab-content" id="loginflux-tab-background" role="tabpanel" aria-labelledby="loginflux-nav-background" aria-hidden="true" tabindex="0">
                             <div class="loginflux-section-header">
                                 <h3><?php esc_html_e( 'Background & Dynamic Visual Animation', 'loginflux' ); ?></h3>
-                                <p><?php esc_html_e( 'Configure your login page background image or choose from 4 modern animated visual effects.', 'loginflux' ); ?></p>
+                                <p><?php esc_html_e( 'Configure your login page background image or choose from 8 modern animated visual effects.', 'loginflux' ); ?></p>
                             </div>
 
                             <!-- Background Image Option -->
@@ -1059,6 +1066,158 @@ function jzlf_admin_page_content() {
                                         min="0"
                                         max="50"
                                     >
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 4: Form Controls & Visibility -->
+                        <div class="loginflux-tab-content" id="loginflux-tab-form-controls" role="tabpanel" aria-labelledby="loginflux-nav-form-controls" aria-hidden="true" tabindex="0">
+                            <div class="loginflux-section-header">
+                                <h3><?php esc_html_e( 'Element Visibility & Form Controls', 'loginflux' ); ?></h3>
+                                <p><?php esc_html_e( 'Control which elements appear on your login screen, set input placeholders, and add custom footer notices.', 'loginflux' ); ?></p>
+                            </div>
+
+                            <!-- Section 1: Visibility Toggles -->
+                            <div class="loginflux-control-group">
+                                <h4 class="loginflux-group-title">
+                                    <span class="dashicons dashicons-hidden"></span>
+                                    <?php esc_html_e( 'Element Visibility Toggles', 'loginflux' ); ?>
+                                </h4>
+                                <p class="description" style="margin-bottom: 18px;">
+                                    <?php esc_html_e( 'Toggle elements on or off to streamline and declutter your login experience.', 'loginflux' ); ?>
+                                </p>
+
+                                <div class="loginflux-toggles-grid">
+                                    <!-- Toggle 1: Lost Password -->
+                                    <div class="loginflux-toggle-card">
+                                        <div class="loginflux-toggle-info">
+                                            <strong><?php esc_html_e( 'Hide "Lost your password?" Link', 'loginflux' ); ?></strong>
+                                            <span><?php esc_html_e( 'Removes the lost password reset link beneath the form.', 'loginflux' ); ?></span>
+                                        </div>
+                                        <label class="loginflux-switch">
+                                            <input
+                                                type="checkbox"
+                                                id="loginflux_hide_lost_password"
+                                                name="loginflux_settings[hide_lost_password]"
+                                                value="1"
+                                                <?php checked( ! empty( $settings['hide_lost_password'] ), true ); ?>
+                                            >
+                                            <span class="loginflux-slider"></span>
+                                        </label>
+                                    </div>
+
+                                    <!-- Toggle 2: Back to Blog -->
+                                    <div class="loginflux-toggle-card">
+                                        <div class="loginflux-toggle-info">
+                                            <strong><?php esc_html_e( 'Hide "Back to Website" Link', 'loginflux' ); ?></strong>
+                                            <span><?php esc_html_e( 'Hides the "← Go to [Website]" link below the login box.', 'loginflux' ); ?></span>
+                                        </div>
+                                        <label class="loginflux-switch">
+                                            <input
+                                                type="checkbox"
+                                                id="loginflux_hide_back_to_blog"
+                                                name="loginflux_settings[hide_back_to_blog]"
+                                                value="1"
+                                                <?php checked( ! empty( $settings['hide_back_to_blog'] ), true ); ?>
+                                            >
+                                            <span class="loginflux-slider"></span>
+                                        </label>
+                                    </div>
+
+                                    <!-- Toggle 3: Remember Me -->
+                                    <div class="loginflux-toggle-card">
+                                        <div class="loginflux-toggle-info">
+                                            <strong><?php esc_html_e( 'Hide "Remember Me" Checkbox', 'loginflux' ); ?></strong>
+                                            <span><?php esc_html_e( 'Hides the persistent session checkbox from the login form.', 'loginflux' ); ?></span>
+                                        </div>
+                                        <label class="loginflux-switch">
+                                            <input
+                                                type="checkbox"
+                                                id="loginflux_hide_remember_me"
+                                                name="loginflux_settings[hide_remember_me]"
+                                                value="1"
+                                                <?php checked( ! empty( $settings['hide_remember_me'] ), true ); ?>
+                                            >
+                                            <span class="loginflux-slider"></span>
+                                        </label>
+                                    </div>
+
+                                    <!-- Toggle 4: Language Switcher -->
+                                    <div class="loginflux-toggle-card">
+                                        <div class="loginflux-toggle-info">
+                                            <strong><?php esc_html_e( 'Hide Language Switcher', 'loginflux' ); ?></strong>
+                                            <span><?php esc_html_e( 'Disables the WordPress language dropdown at the bottom of the page.', 'loginflux' ); ?></span>
+                                        </div>
+                                        <label class="loginflux-switch">
+                                            <input
+                                                type="checkbox"
+                                                id="loginflux_hide_lang_switcher"
+                                                name="loginflux_settings[hide_lang_switcher]"
+                                                value="1"
+                                                <?php checked( ! empty( $settings['hide_lang_switcher'] ), true ); ?>
+                                            >
+                                            <span class="loginflux-slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="loginflux-divider" />
+
+                            <!-- Section 2: Input Field Placeholders -->
+                            <div class="loginflux-control-group">
+                                <h4 class="loginflux-group-title">
+                                    <span class="dashicons dashicons-edit"></span>
+                                    <?php esc_html_e( 'Custom Input Placeholders', 'loginflux' ); ?>
+                                </h4>
+                                <p class="description" style="margin-bottom: 16px;">
+                                    <?php esc_html_e( 'Provide placeholder hints inside the username and password fields. Leave blank to use defaults.', 'loginflux' ); ?>
+                                </p>
+
+                                <div class="loginflux-form-row loginflux-inline-fields">
+                                    <div style="flex: 1;">
+                                        <label for="loginflux_username_placeholder"><?php esc_html_e( 'Username or Email Placeholder', 'loginflux' ); ?></label>
+                                        <input
+                                            type="text"
+                                            id="loginflux_username_placeholder"
+                                            name="loginflux_settings[username_placeholder]"
+                                            value="<?php echo esc_attr( isset( $settings['username_placeholder'] ) ? $settings['username_placeholder'] : '' ); ?>"
+                                            placeholder="<?php esc_attr_e( 'e.g. name@company.com', 'loginflux' ); ?>"
+                                        >
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <label for="loginflux_password_placeholder"><?php esc_html_e( 'Password Placeholder', 'loginflux' ); ?></label>
+                                        <input
+                                            type="text"
+                                            id="loginflux_password_placeholder"
+                                            name="loginflux_settings[password_placeholder]"
+                                            value="<?php echo esc_attr( isset( $settings['password_placeholder'] ) ? $settings['password_placeholder'] : '' ); ?>"
+                                            placeholder="<?php esc_attr_e( 'e.g. ••••••••••••', 'loginflux' ); ?>"
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="loginflux-divider" />
+
+                            <!-- Section 3: Custom Footer Content -->
+                            <div class="loginflux-control-group">
+                                <h4 class="loginflux-group-title">
+                                    <span class="dashicons dashicons-editor-quote"></span>
+                                    <?php esc_html_e( 'Custom Login Footer / Copyright Text', 'loginflux' ); ?>
+                                </h4>
+                                <p class="description" style="margin-bottom: 14px;">
+                                    <?php esc_html_e( 'Display custom copyright, disclaimer, or privacy links below the login form. Basic HTML (<a>, <strong>, <span>) is supported.', 'loginflux' ); ?>
+                                </p>
+
+                                <div class="loginflux-form-row">
+                                    <textarea
+                                        id="loginflux_footer_text"
+                                        name="loginflux_settings[footer_text]"
+                                        rows="4"
+                                        class="loginflux-textarea"
+                                        placeholder="<?php esc_attr_e( 'e.g. &copy; 2026 Your Company. All rights reserved. | <a href=&quot;/privacy-policy&quot;>Privacy Policy</a>', 'loginflux' ); ?>"
+                                    ><?php echo esc_textarea( isset( $settings['footer_text'] ) ? $settings['footer_text'] : '' ); ?></textarea>
                                 </div>
                             </div>
                         </div>

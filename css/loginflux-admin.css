@@ -76,7 +76,8 @@
     box-shadow: 0 4px 14px rgba(99, 102, 241, 0.25);
 }
 
-.loginflux-header-banner h1 {
+.loginflux-header-banner h1,
+.loginflux-header-banner .loginflux-brand-title {
     color: #ffffff;
     font-size: 22px;
     font-weight: 700;
@@ -86,6 +87,19 @@
     align-items: center;
     gap: 12px;
     letter-spacing: -0.02em;
+}
+
+.loginflux-admin-wrap hr.wp-header-end {
+    display: none;
+    margin: 0;
+    border: 0;
+}
+
+.loginflux-admin-wrap > .notice,
+.loginflux-admin-wrap > div.updated,
+.loginflux-admin-wrap > div.error {
+    margin: 14px 0 16px 0;
+    border-radius: 8px;
 }
 
 .loginflux-header-banner .loginflux-badge {
@@ -1277,3 +1291,155 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* =========================================================
+   FORM CONTROLS & VISIBILITY TAB
+   ========================================================= */
+.loginflux-control-group {
+    margin-bottom: 24px;
+}
+
+.loginflux-group-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 6px;
+}
+
+.loginflux-group-title .dashicons {
+    color: var(--loginflux-accent);
+    font-size: 19px;
+    width: 19px;
+    height: 19px;
+}
+
+.loginflux-divider {
+    border: 0;
+    border-top: 1px solid var(--loginflux-line);
+    margin: 28px 0;
+}
+
+.loginflux-toggles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+@media (max-width: 768px) {
+    .loginflux-toggles-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.loginflux-toggle-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 18px;
+    transition: all 0.2s ease;
+}
+
+.loginflux-toggle-card:hover {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.06);
+}
+
+.loginflux-toggle-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.loginflux-toggle-info strong {
+    color: #1e293b;
+    font-size: 13.5px;
+    font-weight: 600;
+}
+
+.loginflux-toggle-info span {
+    color: #64748b;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+/* Modern iOS-style Switch */
+.loginflux-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.loginflux-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+}
+
+.loginflux-slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: #cbd5e1;
+    transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 24px;
+}
+
+.loginflux-slider::before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #ffffff;
+    transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.loginflux-switch input:checked + .loginflux-slider {
+    background-color: var(--loginflux-accent);
+}
+
+.loginflux-switch input:focus-visible + .loginflux-slider {
+    outline: 2px solid var(--loginflux-accent);
+    outline-offset: 2px;
+}
+
+.loginflux-switch input:checked + .loginflux-slider::before {
+    transform: translateX(20px);
+}
+
+.loginflux-textarea {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid var(--loginflux-line);
+    background: #f8fafc;
+    padding: 12px 14px;
+    font-family: inherit;
+    font-size: 13.5px;
+    color: #1e293b;
+    line-height: 1.6;
+    transition: all 0.2s ease;
+    resize: vertical;
+}
+
+.loginflux-textarea:focus {
+    background: #ffffff;
+    border-color: var(--loginflux-accent);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    outline: none;
+}
+

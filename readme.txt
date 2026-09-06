@@ -6,7 +6,7 @@ Plugin URI: https://wordpress.org/plugins/loginflux/
 Tags: login, custom login, login page, animated background, aurora background
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 1.3.0
+Stable tag: 1.4.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -23,6 +23,9 @@ Featuring built-in animated visual effects—including dynamic **Fluid Flow grad
 
 * **8 Modern Animated Background Engines:** Choose between Animation 1 (Pulse Orb & Cyber Grid), Animation 2 (Nebula Glow & Noise), Animation 3 (Aurora Gradient Flow), Animation 4 (Ambient Mesh Spin), Animation 5 (Cosmic Starfield & Stardust), Animation 6 (Holographic Prism & Cyber Waves), Animation 7 (Retro Synthwave & Neon Horizon), and Animation 8 (Liquid Morphing Blobs) with full color and speed controls.
 * **Smart Background Fallback:** Automatically switches between your uploaded custom background image and fluid animated visual gradients.
+* **Form Controls & Element Visibility:** Toggle visibility of the "Lost your password?", "Back to website", "Remember me", and Language Switcher elements with modern switches.
+* **Custom Input Placeholders:** Define custom placeholder hints for the Username and Password fields.
+* **Custom Footer & Copyright Content:** Display custom copyright or privacy notice with safe HTML support below the form.
 * **WordPress Media Library Integration:** Seamlessly upload or choose logos and background images using the native WordPress Media Uploader.
 * **Ultra-Modern Glassmorphism UI:** Frosted glass effect with configurable backdrop blur, card background opacity, and border radius.
 * **Branding & Logo Controls:** Customize your logo image, logo dimensions, and subtitle text.
@@ -66,6 +69,14 @@ Yes. Loginflux follows WordPress internationalization standards and uses the `lo
 2. Animated fluid gradient background with a modern glassmorphism login form.
 
 == Changelog ==
+
+= 1.4.0 =
+* Added new "Form Controls" settings tab in the admin customizer dashboard.
+* Added modern iOS-style toggle switches to hide or show "Lost your password?", "Back to website", "Remember me", and Language Switcher.
+* Added custom Username and Password input placeholder settings with automatic front-end injection.
+* Added custom login footer & copyright content support with safe HTML formatting (`wp_kses_post`).
+* Added corresponding responsive CSS styling for hidden elements, placeholder inputs, and footer notices.
+* Updated default settings schema and sanitization callbacks for all form control options.
 
 = 1.3.0 =
 * Added 4 new animated visual engines: Animation 5 (Cosmic Starfield & Stardust Flow), Animation 6 (Holographic Prism & Cyber Waves), Animation 7 (Retro Synthwave & Neon Horizon), and Animation 8 (Liquid Morphing Blobs).
